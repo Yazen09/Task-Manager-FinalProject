@@ -45,4 +45,7 @@ const UserInfo = ({ user }) => {
   );
 };
 
+
+
 export default UserInfo;
+

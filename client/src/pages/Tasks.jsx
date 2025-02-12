@@ -26,6 +26,7 @@ const TASK_TYPE = {
 
 const Tasks = () => {
   const params = useParams();
+
   const [selected, setSelected] = useState(0);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -55,8 +56,11 @@ const Tasks = () => {
         {!status && (
           <div className='w-full flex justify-between gap-4 md:gap-x-12 py-4'>
             <TaskTitle label='To Do' className={TASK_TYPE.todo} />
-            <TaskTitle label='In Progress' className={TASK_TYPE["in progress"]} />
-            <TaskTitle label='Completed' className={TASK_TYPE.completed} />
+            <TaskTitle
+              label='In Progress'
+              className={TASK_TYPE["in progress"]}
+            />
+            <TaskTitle label='completed' className={TASK_TYPE.completed} />
           </div>
         )}
 
@@ -69,7 +73,7 @@ const Tasks = () => {
         )}
       </Tabs>
 
-      {open && <AddTask open={open} setOpen={setOpen} />}
+      <AddTask open={open} setOpen={setOpen} />
     </div>
   );
 };

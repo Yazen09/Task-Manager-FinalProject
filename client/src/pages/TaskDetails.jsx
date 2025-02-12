@@ -16,7 +16,7 @@ import { useParams } from "react-router-dom";
 import { toast } from "sonner";
 import { tasks } from "../assets/data";
 import Tabs from "../components/Tabs";
-import { PRIORITYSTYLES, TASK_TYPE, getInitials } from "../utils";
+import { PRIOTITYSTYELS, TASK_TYPE, getInitials } from "../utils";
 import Loading from "../components/Loader";
 import Button from "../components/Button";
 
@@ -106,7 +106,7 @@ const TaskDetails = () => {
                   <div
                     className={clsx(
                       "flex gap-1 items-center text-base font-semibold px-3 py-1 rounded-full",
-                      PRIORITYSTYLES[task?.priority],
+                      PRIOTITYSTYELS[task?.priority],
                       bgColor[task?.priority]
                     )}
                   >

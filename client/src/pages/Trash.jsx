@@ -10,7 +10,7 @@ import {
 import { tasks } from "../assets/data";
 import Title from "../components/Title";
 import Button from "../components/Button";
-import { PRIORITYSTYLES, TASK_TYPE } from "../utils";
+import { PRIOTITYSTYELS, TASK_TYPE } from "../utils";
 import ConfirmatioDialog from "../components/Dialogs";
 
 const ICONS = {
@@ -77,7 +77,7 @@ const Trash = () => {
 
       <td className='py-2 capitalize'>
         <div className={"flex gap-1 items-center"}>
-          <span className={clsx("text-lg", PRIORITYSTYLES[item?.priority])}>
+          <span className={clsx("text-lg", PRIOTITYSTYELS[item?.priority])}>
             {ICONS[item?.priority]}
           </span>
           <span className=''>{item?.priority}</span>

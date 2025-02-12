@@ -34,7 +34,7 @@ export function getInitials(fullName) {
   return initialsStr;
 }
 
-export const PRIORITYSTYLES = {
+export const PRIOTITYSTYELS = {
   high: "text-red-600",
   medium: "text-yellow-600",
   low: "text-blue-600",
