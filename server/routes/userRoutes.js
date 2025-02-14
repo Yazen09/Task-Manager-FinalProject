@@ -10,10 +10,16 @@ import {
   logoutUser, 
   markNotificationRead, 
   registerUser, 
-  updateUserProfile 
+  updateUserProfile ,
+
+  
 } from '../controllers/userController.js';
 
+
+
 const router = express.Router();
+
+
 
 router.post("/register", registerUser);
 router.post("/login", loginUser);
@@ -29,7 +35,7 @@ router.put("/change-password", protectRoute, changeUserPassword);
 // ADMIN ROUTES
 router
   .route("/:id")
-  .put(protectRoute, isAdminRoute, activateUserProfile)
+  .put(protectRoute, isAdminRoute, activateUserProfile,)
   .delete(protectRoute, isAdminRoute, deleteUserProfile);
 
 export default router;

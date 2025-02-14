@@ -8,35 +8,44 @@ import clsx from "clsx";
 import ConfirmatioDialog, { UserAction } from "../components/Dialogs";
 import AddUser from "../components/AddUser";
 
-
 const Users = () => {
   const [users, setUsers] = useState(summary.users); 
   const [openDialog, setOpenDialog] = useState(false);
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(null);
 
- 
+  console.log("📌 Utilisateurs au rendu :", users);
+
   const addOrEditUser = (userData) => {
+    console.log("📝 Fonction addOrEditUser appelée avec :", userData);
+
     if (selected) {
       setUsers(users.map((u) => (u._id === selected._id ? userData : u)));
+      console.log("✏️ Modification de l'utilisateur :", selected);
     } else {
-      setUsers([...users, { ...userData, _id: Date.now().toString() }]);
+      const newUser = { ...userData, _id: Date.now().toString() };
+      setUsers([...users, newUser]);
+      console.log("✅ Nouvel utilisateur ajouté :", newUser);
     }
+    
     setOpen(false);
     setSelected(null);
   };
 
   const deleteHandler = () => {
+    console.log("🗑️ Suppression de l'utilisateur avec l'ID :", selected);
     setUsers(users.filter((u) => u._id !== selected));
     setOpenDialog(false);
   };
 
   const deleteClick = (id) => {
+    console.log("⚠️ Clic sur le bouton DELETE - ID sélectionné :", id);
     setSelected(id);
     setOpenDialog(true);
   };
 
   const editClick = (el) => {
+    console.log("✏️ Clic sur le bouton EDIT - Utilisateur sélectionné :", el);
     setSelected(el);
     setOpen(true);
   };
@@ -50,7 +59,10 @@ const Users = () => {
             label='Add New User'
             icon={<IoMdAdd className='text-lg' />}
             className='flex flex-row-reverse gap-1 items-center bg-blue-600 text-white rounded-md 2xl:py-2.5'
-            onClick={() => setOpen(true)}
+            onClick={() => {
+              console.log("🟢 Bouton Add New User cliqué");
+              setOpen(true);
+            }}
           />
         </div>
 
@@ -89,8 +101,18 @@ const Users = () => {
                       </button>
                     </td>
                     <td className='p-2 flex gap-4 justify-end'>
-                      <Button className='text-blue-600 hover:text-blue-500 font-semibold sm:px-0' label='Edit' type='button' onClick={() => editClick(user)} />
-                      <Button className='text-red-700 hover:text-red-500 font-semibold sm:px-0' label='Delete' type='button' onClick={() => deleteClick(user._id)} />
+                      <Button
+                        className='text-blue-600 hover:text-blue-500 font-semibold sm:px-0'
+                        label='Edit'
+                        type='button'
+                        onClick={() => editClick(user)}
+                      />
+                      <Button
+                        className='text-red-700 hover:text-red-500 font-semibold sm:px-0'
+                        label='Delete'
+                        type='button'
+                        onClick={() => deleteClick(user._id)}
+                      />
                     </td>
                   </tr>
                 ))}
